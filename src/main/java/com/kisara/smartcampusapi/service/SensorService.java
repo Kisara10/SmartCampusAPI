@@ -55,4 +55,16 @@ public class SensorService {
         }
     }
     
+    public Collection<Sensor> getSensorsByType(String type){
+        List<Sensor> filtered = new ArrayList<>();
+        
+        for(Sensor sensor : sensors.values()){
+            if(sensor.getType() != null && sensor.getType(). equalsIgnoreCase(type)){
+                filtered.add(sensor);
+            }
+        }
+        
+        return filtered;
+    }
+    
 }

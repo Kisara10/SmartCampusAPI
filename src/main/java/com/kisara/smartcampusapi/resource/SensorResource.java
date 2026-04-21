@@ -15,7 +15,11 @@ public class SensorResource {
     
     // GET all sensors
     @GET
-    public Collection<Sensor> getSensors(){
+    public Collection<Sensor> getSensors(@QueryParam("type") String type){
+        if (type != null && !type.isEmpty()){
+            return sensorService.getSensorsByType(type);
+        }
+        
         return sensorService.getAllSensors();
     }
     
