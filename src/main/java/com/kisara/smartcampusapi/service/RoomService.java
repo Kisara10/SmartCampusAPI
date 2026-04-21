@@ -31,8 +31,20 @@ public class RoomService {
     }
     
     // Delete room
-    public void deleteRoom(String id){
+    public boolean deleteRoom(String id){
+        Room room = rooms.get(id);
+        
+        if(room == null){
+            return false;
+        }
+        
+        // check the sesnor exist
+        if(room.getSensorIds() != null && !room.getSensorIds().isEmpty()){
+            throw new RuntimeException("Cannot delete room with active sensors");
+        }
+        
         rooms.remove(id);
+        return true;
     }
     
 }

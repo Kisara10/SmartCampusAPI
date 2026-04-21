@@ -43,8 +43,19 @@ public class RoomResource {
     // DELETE room
     @DELETE
     @Path("/{id}")
-    public void deleteRoom(@PathParam("id") String id){
-        roomService.deleteRoom(id);
+    public String deleteRoom(@PathParam("id") String id){
+        
+        try{
+            boolean deleted = roomService.deleteRoom(id);
+            
+            if(!deleted){
+                return "Room not found";
+            }
+            
+            return "Room deleted successfully";
+        }catch(RuntimeException e){
+            return e.getMessage();
+        }
     }
     
 }
