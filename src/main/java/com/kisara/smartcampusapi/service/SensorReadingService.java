@@ -1,0 +1,35 @@
+package com.kisara.smartcampusapi.service;
+
+import com.kisara.smartcampusapi.model.SensorReading;
+import com.kisara.smartcampusapi.model.Sensor;
+
+import java.util.*;
+
+public class SensorReadingService {
+    
+    private static Map<String, List<SensorReading>> readings = new HashMap<>();
+    
+    private SensorService sensorService = new SensorService();
+    
+    // Get readings for a sensor
+    public List<SensorReading> getReadings(String sensorId){
+        return readings.getOrDefault(sensorId, new ArrayList<>());
+    }
+    
+    // Add reading
+    public SensorReading addReading(String sensorId, SensorReading reading){
+        Sensor sensor = sensorService.getSensor(sensorId);
+        
+        if(sensor == null){
+            throw new RuntimeException("Sensor not found");
+        }
+        
+        // Add reading to list
+        readings.computeIfAbsent(sensorId, k -> new ArrayList<>()).add(reading);
+        
+        sensor.setCurrentValue(reading.getValue());
+        
+        return reading;
+    }
+    
+}

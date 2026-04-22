@@ -44,5 +44,10 @@ public class SensorResource {
         return "Sensor deleted successfully";
     }
     
+    @Path("/{id}/readings")
+    public SensorReadingResource getSensorReadings(@PathParam("id") String id){
+        return new SensorReadingResource(id);
+    }
+    
     
 }
