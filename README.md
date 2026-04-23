@@ -77,13 +77,14 @@ curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/sensors \
 curl http://localhost:8080/SmartCampusAPI/api/v1/sensors/S1
 ```
 
-# Add Reading
+### Add Reading
 ```bash
 curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/sensors/S1/readings \
 -H "Content-Type: application/json" \
 -d '{"id":"READ1","timestamp":1710000000,"value":30.5}'
 ```
 
+## Conceptual Report
 ### 1.	Lifecycle Question 
 The default is to create an instance of JAX-RS resource classes on a request-by-request basis. This implies that a new object of the resource type is during every incoming HTTP request. This design does not share state among requests, and this minimizes the chances of concurrency problems. But as the application is using in memory data structures like maps and lists these must be declares as static so that they can store data between requests. Multi-threaded environments need to be properly synchronized to avoid race condition. 
 
