@@ -36,16 +36,17 @@ POST /api/v1/sensors/{id}/readings
 - Apache Tomcat
 - Maven
 
-- ## How to Run
+ ## How to Run
 1. Clone the repository
+   ```bash
    git clone https://github.com/Kisara10/SmartCampusAPI.git
-2. Build the porject using Maven
+3. Build the porject using Maven
    mvn clean package
-3. Deploy the generated WAR file to Apache Tomcat
+4. Deploy the generated WAR file to Apache Tomcat
    Copy the WAR file from the target/ folder to:
     apache-tomcat/webapps/
-4. Start the Tomcat server
-5. Access the API at
+5. Start the Tomcat server
+6. Access the API at
    http://localhost:8080/SmartCampusAPI/api/v1
 
 
