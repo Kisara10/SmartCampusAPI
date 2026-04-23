@@ -10,7 +10,7 @@ public class SensorReadingService {
     
     private static Map<String, List<SensorReading>> readings = new HashMap<>();
     
-    private SensorService sensorService = new SensorService();
+    private static SensorService sensorService = new SensorService();
     
     // Get readings for a sensor
     public List<SensorReading> getReadings(String sensorId){

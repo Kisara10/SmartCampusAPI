@@ -12,7 +12,7 @@ import java.util.Collection;
 @Consumes(MediaType.APPLICATION_JSON)
 public class RoomResource {
     
-    private RoomService roomService = new RoomService();
+    private static RoomService roomService = new RoomService();
     
     // GET all rooms
     @GET
@@ -43,19 +43,9 @@ public class RoomResource {
     // DELETE room
     @DELETE
     @Path("/{id}")
-    public String deleteRoom(@PathParam("id") String id){
+    public void deleteRoom(@PathParam("id") String id){
         
-        try{
-            boolean deleted = roomService.deleteRoom(id);
-            
-            if(!deleted){
-                return "Room not found";
-            }
-            
-            return "Room deleted successfully";
-        }catch(RuntimeException e){
-            return e.getMessage();
-        }
+        roomService.deleteRoom(id);
     }
     
 }

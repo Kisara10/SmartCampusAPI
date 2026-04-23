@@ -1,9 +1,13 @@
 package com.kisara.smartcampusapi.config;
 
 import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import org.glassfish.jersey.server.ResourceConfig;
 
 @ApplicationPath("/api/v1")
-public class AppConfig extends Application{
+public class AppConfig extends ResourceConfig{
+    
+    public AppConfig(){
+        packages("com.kisara.smartcampusapi");
+    }
     
 }
