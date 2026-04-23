@@ -2,6 +2,7 @@ package com.kisara.smartcampusapi.service;
 
 import com.kisara.smartcampusapi.model.Sensor;
 import com.kisara.smartcampusapi.model.Room;
+import com.kisara.smartcampusapi.exception.LinkedResourceNotFoundException;
 
 import java.util.*;
 
@@ -17,7 +18,7 @@ public class SensorService {
         Room room = roomService.getRoom(sensor.getRoomId());
         
         if (room == null){
-            throw new RuntimeException("Room does not exist");
+            throw new LinkedResourceNotFoundException("Room does not exist");
         }
         
         // Add sensor

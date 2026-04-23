@@ -1,6 +1,7 @@
 package com.kisara.smartcampusapi.service;
 
 import com.kisara.smartcampusapi.model.Room;
+import com.kisara.smartcampusapi.exception.RoomNotEmptyException;
 
 import java.util.*;
 
@@ -40,7 +41,7 @@ public class RoomService {
         
         // check the sesnor exist
         if(room.getSensorIds() != null && !room.getSensorIds().isEmpty()){
-            throw new RuntimeException("Cannot delete room with active sensors");
+            throw new RoomNotEmptyException("Room has active sensors");
         }
         
         rooms.remove(id);

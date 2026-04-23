@@ -2,6 +2,7 @@ package com.kisara.smartcampusapi.service;
 
 import com.kisara.smartcampusapi.model.SensorReading;
 import com.kisara.smartcampusapi.model.Sensor;
+import com.kisara.smartcampusapi.exception.SensorUnavailableException;
 
 import java.util.*;
 
@@ -22,6 +23,9 @@ public class SensorReadingService {
         
         if(sensor == null){
             throw new RuntimeException("Sensor not found");
+        }
+        if ("MAINTENANCE".equalsIgnoreCase(sensor.getStatus())){
+            throw new SensorUnavailableException("Sensor is under maintenance");
         }
         
         // Add reading to list
