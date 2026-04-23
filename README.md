@@ -38,13 +38,16 @@ POST /api/v1/sensors/{id}/readings
 
 - ## How to Run
 1. Clone the repository
-2. Open in NetBeans
-3. Build the project
-4. Deploy to Tomcat server
-5. Test using Postman
+   git clone https://github.com/Kisara10/SmartCampusAPI.git
+2. Build the porject using Maven
+   mvn clean package
+3. Deploy the generated WAR file to Apache Tomcat
+   Copy the WAR file from the target/ folder to:
+    apache-tomcat/webapps/
+4. Start the Tomcat server
+5. Access the API at
+   http://localhost:8080/SmartCampusAPI/api/v1
 
-Start Tomcat and access:
-`http://localhost:8080/SmartCampusAPI/api/v1`
 
 ## Conceptual Report
 
