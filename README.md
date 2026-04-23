@@ -40,14 +40,15 @@ POST /api/v1/sensors/{id}/readings
 1. Clone the repository
    ```bash
    git clone https://github.com/Kisara10/SmartCampusAPI.git
-3. Build the porject using Maven
+   cd SmartCampusAPI
+2. Build the porject using Maven
    ```bash
    mvn clean package
-5. Deploy the generated WAR file to Apache Tomcat
+3. Deploy the generated WAR file to Apache Tomcat
    ```bash
    Copy the WAR file from the target/ folder to:apache-tomcat/webapps/
-7. Start the Tomcat server
-8. Access the API at
+4. Start the Tomcat server
+5. Access the API at
    ```bash
    http://localhost:8080/SmartCampusAPI/api/v1
 
@@ -62,7 +63,6 @@ curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/rooms \
 ### Get Rooms
 ```bash
 curl http://localhost:8080/SmartCampusAPI/api/v1/rooms
-## Conceptual Report
 ```
 
 ### Create Sensor
