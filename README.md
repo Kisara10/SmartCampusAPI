@@ -41,16 +41,48 @@ POST /api/v1/sensors/{id}/readings
    ```bash
    git clone https://github.com/Kisara10/SmartCampusAPI.git
 3. Build the porject using Maven
+   ```bash
    mvn clean package
-4. Deploy the generated WAR file to Apache Tomcat
-   Copy the WAR file from the target/ folder to:
-    apache-tomcat/webapps/
-5. Start the Tomcat server
-6. Access the API at
+5. Deploy the generated WAR file to Apache Tomcat
+   ```bash
+   Copy the WAR file from the target/ folder to:apache-tomcat/webapps/
+7. Start the Tomcat server
+8. Access the API at
+   ```bash
    http://localhost:8080/SmartCampusAPI/api/v1
 
+## Curl commands
 
+### Create room
+```bash
+curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/rooms \
+-H "Content-Type: application/json" \
+-d '{"id":"R1","name":"Lab Room","capacity":50}'
+``` 
+### Get Rooms
+```bash
+curl http://localhost:8080/SmartCampusAPI/api/v1/rooms
 ## Conceptual Report
+```
+
+### Create Sensor
+```bash
+curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/sensors \
+-H "Content-Type: application/json" \
+-d '{"id":"S1","type":"Temperature","status":"ACTIVE","currentValue":25,"roomId":"R1"}'
+```
+
+### Get sensor
+```bash
+curl http://localhost:8080/SmartCampusAPI/api/v1/sensors/S1
+```
+
+# Add Reading
+```bash
+curl -X POST http://localhost:8080/SmartCampusAPI/api/v1/sensors/S1/readings \
+-H "Content-Type: application/json" \
+-d '{"id":"READ1","timestamp":1710000000,"value":30.5}'
+```
 
 ### 1.	Lifecycle Question 
 The default is to create an instance of JAX-RS resource classes on a request-by-request basis. This implies that a new object of the resource type is during every incoming HTTP request. This design does not share state among requests, and this minimizes the chances of concurrency problems. But as the application is using in memory data structures like maps and lists these must be declares as static so that they can store data between requests. Multi-threaded environments need to be properly synchronized to avoid race condition. 
